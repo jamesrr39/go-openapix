@@ -3,7 +3,6 @@ module github.com/jamesrr39/go-openapix
 go 1.21.4
 
 require (
-	github.com/go-chi/chi/v5 v5.0.12
 	github.com/swaggest/openapi-go v0.2.50
 	github.com/swaggest/rest v0.2.66
 	github.com/swaggest/usecase v1.3.1

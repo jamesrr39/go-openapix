@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/go-chi/chi/v5"
 	"github.com/swaggest/openapi-go"
 	"github.com/swaggest/rest/nethttp"
 	"github.com/swaggest/usecase"
@@ -94,32 +93,37 @@ func createEndpointName(title string) string {
 	return strings.Join(nameFragments, "")
 }
 
+// router can satisfied by chi.Router
+type router interface {
+	Method(method string, pattern string, h http.Handler)
+}
+
 // convience methods for setting up endpoints
 
-func Get(r chi.Router, path string, handler *nethttp.Handler) {
+func Get(r router, path string, handler *nethttp.Handler) {
 	r.Method(http.MethodGet, path, handler)
 }
-func Head(r chi.Router, path string, handler *nethttp.Handler) {
+func Head(r router, path string, handler *nethttp.Handler) {
 	r.Method(http.MethodHead, path, handler)
 }
-func Post(r chi.Router, path string, handler *nethttp.Handler) {
+func Post(r router, path string, handler *nethttp.Handler) {
 	r.Method(http.MethodPost, path, handler)
 }
-func Put(r chi.Router, path string, handler *nethttp.Handler) {
+func Put(r router, path string, handler *nethttp.Handler) {
 	r.Method(http.MethodPut, path, handler)
 }
-func Patch(r chi.Router, path string, handler *nethttp.Handler) {
+func Patch(r router, path string, handler *nethttp.Handler) {
 	r.Method(http.MethodPatch, path, handler)
 }
-func Delete(r chi.Router, path string, handler *nethttp.Handler) {
+func Delete(r router, path string, handler *nethttp.Handler) {
 	r.Method(http.MethodDelete, path, handler)
 }
-func Connect(r chi.Router, path string, handler *nethttp.Handler) {
+func Connect(r router, path string, handler *nethttp.Handler) {
 	r.Method(http.MethodConnect, path, handler)
 }
-func Options(r chi.Router, path string, handler *nethttp.Handler) {
+func Options(r router, path string, handler *nethttp.Handler) {
 	r.Method(http.MethodOptions, path, handler)
 }
-func Trace(r chi.Router, path string, handler *nethttp.Handler) {
+func Trace(r router, path string, handler *nethttp.Handler) {
 	r.Method(http.MethodTrace, path, handler)
 }
