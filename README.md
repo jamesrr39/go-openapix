@@ -2,7 +2,7 @@
 
 go-openapix provides some useful convience functions to to [swaggest](https://github.com/swaggest), so that you can build up your APIs in a type-checked and auto-documented way!
 
-Some highlights
+Some highlights:
 
 - `MustCreateOpenapiEndpoint` - uses generics to enforce that you are returning the correct (documented) type in code. End-user does not need to use generics themselves, making it simpler to use. It also generates a endpoint name, based on the title you provide - no accidental copy/paste doubling-up endpoints with the same name.
 - `MustCheckNonNullArrays` - document `[]` instead of `null` when the array is empty.
